@@ -1,20 +1,27 @@
+const globalAny = global as any;
 /**
  * Placeholder for future translate functionality
  */
 export function getWindowWidth() {
-  return typeof global.window !== 'undefined' ? global.window.innerWidth : 0;
+  return typeof globalAny.window !== 'undefined'
+    ? globalAny.window.innerWidth
+    : 0;
 }
 
 export function getWindowHeight() {
-  return typeof global.window !== 'undefined' ? global.window.innerHeight : 0;
+  return typeof globalAny.window !== 'undefined'
+    ? globalAny.window.innerHeight
+    : 0;
 }
 
 // Get the highest window context that isn't cross-origin
 // (When in an iframe)
-export function getHighestSafeWindowContext(self: Window = global.window.self) {
+export function getHighestSafeWindowContext(
+  self: Window = globalAny.window.self
+) {
   const { referrer } = self.document;
   // If we reached the top level, return self
-  if (self === global.window.top || !referrer) {
+  if (self === globalAny.window.top || !referrer) {
     return self;
   }
 

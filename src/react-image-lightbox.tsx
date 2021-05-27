@@ -20,6 +20,8 @@ import {
 import './style.css';
 import { Callback, StringMap } from './baseTypes';
 
+const globalAny = global as any;
+
 interface Props {
   //-----------------------------
   // Image sources
@@ -1250,7 +1252,7 @@ class ReactImageLightbox extends Component<Props, State> {
       return;
     }
 
-    const inMemoryImage = new global.Image();
+    const inMemoryImage = new globalAny.Image();
 
     if (this.props.imageCrossOrigin) {
       inMemoryImage.crossOrigin = this.props.imageCrossOrigin;
@@ -1577,8 +1579,8 @@ class ReactImageLightbox extends Component<Props, State> {
         style={modalStyle}
         contentLabel={'Lightbox'}
         appElement={
-          typeof global.window !== 'undefined'
-            ? global.window.document.body
+          typeof globalAny.window !== 'undefined'
+            ? globalAny.window.document.body
             : undefined
         }
       >
