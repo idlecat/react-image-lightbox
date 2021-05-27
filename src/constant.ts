@@ -23,17 +23,21 @@ export const KEYS = {
 };
 
 // Actions
-export const ACTION_NONE = 0;
-export const ACTION_MOVE = 1;
-export const ACTION_SWIPE = 2;
-export const ACTION_PINCH = 3;
-export const ACTION_ROTATE = 4;
+export enum Action {
+  NONE = 0,
+  MOVE,
+  SWIPE,
+  PINCH,
+  ROTATE,
+}
 
 // Events source
-export const SOURCE_ANY = 0;
-export const SOURCE_MOUSE = 1;
-export const SOURCE_TOUCH = 2;
-export const SOURCE_POINTER = 3;
+export enum Source {
+  ANY = 0,
+  MOUSE,
+  TOUCH,
+  POINTER,
+}
 
 // Minimal swipe distance
 export const MIN_SWIPE_DISTANCE = 200;
